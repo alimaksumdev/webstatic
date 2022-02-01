@@ -1,11 +1,11 @@
-import Link from "next/link";
+import Link from 'next/link';
 
 const Header = () => {
   return (
     <nav className="fixed w-full z-30 top-0 text-white">
       <div className="w-full container mx-auto flex flex-wrap items-center justify-between mt-0 py-2">
         <div className="pl-4 flex items-center hover:text-indigo-500">
-          <Link href={"/"}>Logo</Link>
+          <Link href={'/'}>Logo</Link>
         </div>
         <div className="lg:hidden pr-4">
           <button
@@ -42,7 +42,7 @@ const Header = () => {
           </button>
         </div>
       </div>
-      <hr class="border-b border-gray-100 opacity-25 my-0 py-0" />
+      <hr className="border-b border-gray-100 opacity-25 my-0 py-0" />
     </nav>
   );
 };
