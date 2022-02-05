@@ -2,7 +2,7 @@ import Link from 'next/link';
 
 const Header = () => {
   return (
-    <nav className="fixed w-full z-30 top-0 text-white">
+    <nav className="w-full z-30 top-0 fixed bg-white/80">
       <div className="w-full container mx-auto flex flex-wrap items-center justify-between mt-0 py-2">
         <div className="pl-4 flex items-center hover:text-indigo-500">
           <Link href={'/'}>Logo</Link>
@@ -24,7 +24,7 @@ const Header = () => {
         </div>
         <div
           id="nav-content"
-          className="w-full flex-grow lg:flex lg:items-center lg:w-auto hidden mt-2 lg:mt-0 bg-white lg:bg-transparent text-black p-4 lg:p-0 z-20"
+          className="w-full flex-grow lg:flex lg:items-center lg:w-auto hidden mt-2 lg:mt-0 p-4 lg:p-0 z-20"
         >
           <ul className="list-reset lg:flex justify-end flex-1 items-center">
             <li className="mr-3 inline-block py-2 px-4 text-black font-bold no-underline">
