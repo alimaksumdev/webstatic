@@ -2,10 +2,13 @@ import Link from 'next/link';
 
 const Header = () => {
   return (
-    <nav className="w-full z-30 top-0 fixed bg-white/80">
+    <nav className="sticky top-0 z-40 w-full backdrop-blur flex-none transition-colors duration-500 lg:z-50 lg:border-b lg:border-slate-900/10 dark:border-slate-50/[0.06] bg-white/95 supports-backdrop-blur:bg-white/60 dark:bg-transparent">
       <div className="w-full container mx-auto flex flex-wrap items-center justify-between mt-0 py-2">
         <div className="pl-4 flex items-center hover:text-indigo-500">
-          <Link href={'/'}>Logo</Link>
+          <div><img className='w-10 p-1 mr-2' src="/assets/images/favicon.svg" alt="PP Ali Maksum" /></div>
+          <div>
+            Yayasan Pondok Pesantren Ali Maksum <br /> Krapyak Yogyakarta
+          </div>
         </div>
         <div className="lg:hidden pr-4">
           <button
@@ -30,7 +33,7 @@ const Header = () => {
             <li className="mr-3 inline-block py-2 px-4 text-black font-bold no-underline">
               Sekolah Menengah Pertama
             </li>
-            <li className="mr-3 inline-block text-black no-underline hover:text-gray-800 hover:text-underline py-2 px-4">
+            <li className="mr-3 inline-block text-black no-underline font-bold hover:text-gray-800 hover:text-underline py-2 px-4">
               Sekolah Menengah Atas
             </li>
           </ul>
