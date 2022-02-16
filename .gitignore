@@ -19,6 +19,7 @@
 .DS_Store
 *.pem
 .babelrc
+yarn.lock
 
 # debug
 npm-debug.log*
