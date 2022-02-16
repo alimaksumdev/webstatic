@@ -20,11 +20,11 @@ const Index = ({ allPosts }: Props) => {
     <>
       <Layout>
         <Head>
-          <title>Next.js Blog Example with {CMS_NAME}</title>
+          <title>Yayasan Pondok Pesantren Ali Maksum - Krapyak Yogyakarta</title>
         </Head>
         <Header />
           <Intro />
-        <Container>
+        {/* <Container>
           {heroPost && (
             <HeroPost
               title={heroPost.title}
@@ -36,7 +36,7 @@ const Index = ({ allPosts }: Props) => {
             />
           )}
           {morePosts.length > 0 && <MoreStories posts={morePosts} />}
-        </Container>
+        </Container> */}
       </Layout>
     </>
   )
