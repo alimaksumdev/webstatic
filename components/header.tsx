@@ -2,12 +2,14 @@ import Link from 'next/link';
 
 const Header = () => {
   return (
-    <nav className="fixed top-0 z-40 w-full backdrop-blur flex-none transition-colors duration-500 lg:z-50 lg:border-b lg:border-slate-900/10 dark:border-slate-50/[0.06] bg-white/95 supports-backdrop-blur:bg-white/60 dark:bg-transparent">
+    <nav className="sticky top-0 z-40 w-full backdrop-blur flex-none transition-colors duration-500 lg:z-50 lg:border-b lg:border-slate-900/10 dark:border-slate-50/[0.06] bg-white/95 supports-backdrop-blur:bg-white/60 dark:bg-transparent">
       <div className="w-full container mx-auto flex flex-wrap items-center justify-between mt-0 py-2">
         <div className="pl-4 flex items-center hover:text-indigo-500">
-          <div><img className='w-10 p-1 mr-2' src="/assets/images/favicon.svg" alt="PP Ali Maksum" /></div>
+          <div><Link href={'/'}><img className='w-10 p-1 mr-2' src="/assets/images/favicon.svg" alt="PP Ali Maksum" /></Link></div>
           <div className='text-sm'>
-            Yayasan Pondok Pesantren Ali Maksum <br /> Krapyak Yogyakarta
+            <Link href={'/'}>Yayasan Pondok Pesantren Ali Maksum</Link>
+            <br />
+            <Link href={'/'}>Krapyak Yogyakarta</Link>
           </div>
         </div>
         <div className="lg:hidden pr-4">
