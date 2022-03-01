@@ -21,7 +21,7 @@ Website ini didesain untuk konten statis yang kontennya _di-generate_ dari sumbe
 - Clone repo: 
   ```git clone https://github.com/alimaksumdev/webstatic.git
   cd webstatic
-  yarn```
+  yarn ```
   
 - Jalankan local development server
   ```yarn dev```
