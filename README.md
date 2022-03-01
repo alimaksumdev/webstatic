@@ -19,12 +19,15 @@ Website ini didesain untuk konten statis yang kontennya _di-generate_ dari sumbe
 ### Local development
 
 - Clone repo: 
-  ```git clone https://github.com/alimaksumdev/webstatic.git
+  ```
+  git clone https://github.com/alimaksumdev/webstatic.git
   cd webstatic
   yarn 
 - Jalankan local development server:
 
-  ```yarn dev```
+  ```
+  yarn dev
+  ```
 
 - Rekomendasi: gunakan editor Visual Studio Code
 - Ajukan pull request untuk menerapkan kontribusi Anda.
