@@ -1,4 +1,5 @@
 // import { CMS_NAME } from '../lib/constants';
+import Link from "next/link";
 
 const Intro = () => {
   return (
@@ -10,12 +11,12 @@ const Intro = () => {
         Membentuk insan beriman kuat, taqwa yang kaafah, berakhlaq mulia,
         menguasai IPTEK yang mashlahah, beramal profesional.
       </h4>
-      <div className="flex">
+      <div className="flex py-4">
       <button
         id="navAction"
         className="hover:underline bg-white text-gray-800 font-bold rounded-xl mt-4 lg:mt-0 py-4 px-8 mx-1 focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out"
       >
-        Info Pendaftaran
+        <Link href={'/info-pendaftaran'}>Info Pendaftaran</Link>
       </button>
       <button
         id="navAction"
