@@ -14,6 +14,9 @@ Website ini didesain untuk konten statis yang kontennya _di-generate_ dari sumbe
 - Modular (berguna jika nantinya dipindah menjadi CMS-based web)
 - Mudah dikonversi dari atau ke format Microsoft Word dan HTML
 
+## On Progress
+- Tabel dari markdown belum dapat ditampilkan dengan benar
+
 ## Cara berkontribusi
 
 ### Local development

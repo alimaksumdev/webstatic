@@ -16,13 +16,13 @@ const Intro = () => {
         id="navAction"
         className="hover:underline bg-white text-gray-800 font-bold rounded-xl mt-4 lg:mt-0 py-4 px-8 mx-1 focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out"
       >
-        <Link href={'/info-pendaftaran'}>Info Pendaftaran</Link>
+        <Link href={'/posts/info-pendaftaran'}>Info Pendaftaran</Link>
       </button>
       <button
         id="navAction"
         className="hover:underline bg-white text-gray-800 font-bold rounded-xl mt-4 lg:mt-0 py-4 px-8 mx-1 focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out"
       >
-        Tentang
+        <Link href={'/posts/about'}>Tentang</Link>
       </button>
       </div>
     </section>

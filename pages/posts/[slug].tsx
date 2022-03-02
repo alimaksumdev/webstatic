@@ -30,7 +30,7 @@ const Post = ({ post, morePosts, preview }: Props) => {
           <PostTitle>Loading…</PostTitle>
         ) : (
           <>
-            <article className="mb-32">
+            <article className="mb-32 prose lg:prose-xl">
               <Head>
                 <title>
                   {post.title} | Pondok Pesantren Ali Maksum
