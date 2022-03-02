@@ -2,7 +2,7 @@
 
 ## Arsitektur
 
-Dibangun dengan framework Nextjs dan nantinya di-deploy sebagai incremental static generation site.
+Dibangun dengan framework Nextjs+TailwindCSS dan nantinya di-deploy sebagai incremental static generation site.
 
 ## Pembuatan Konten
 
