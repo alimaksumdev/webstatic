@@ -1,10 +1,10 @@
 ---
 title: 'Informasi Pendaftaran'
-excerpt: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Praesent elementum facilisis leo vel fringilla est ullamcorper eget. At imperdiet dui accumsan sit amet nulla facilities morbi tempus.'
-coverImage: '/assets/images/favicon.jpg'
+excerpt: 'Apa saja yang harus disiapkan untuk mendaftar di SMP/SMA Ali Maksum?.'
+coverImage: '/assets/blog/psb/banner-psb-s22.jpg'
 date: '2022-03-01'
 author:
-  name: JJ Kasper
+  name: Panitia PSB
   picture: '/assets/blog/authors/jj.jpeg'
 ogImage:
   url: '/assets/blog/dynamic-routing/cover.jpg'
