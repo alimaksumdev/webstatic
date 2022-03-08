@@ -2,10 +2,10 @@ import fs from 'fs'
 import matter from 'gray-matter'
 import Link from 'next/link'
 import path from 'path'
-import Layout from '../components/Layout'
-import { postFilePaths, POSTS_PATH } from '../utils/mdxUtils'
-import Container from '../components/Container'
-import Intro from '../components/Intro'
+import Layout from 'components/Layout'
+import { postFilePaths, POSTS_PATH } from 'utils/mdxUtils'
+import Container from 'components/Container'
+import Intro from 'components/Intro'
 
 export default function Index({ posts }) {
   return (
