@@ -26,7 +26,7 @@ const components = {
 export default function PostPage({ source, frontMatter }) {
   return (
     <Container title={`${frontMatter.title} - PP Ali Maksum`}>
-      <main>
+      <main className="mx-4 sm:mx-2">
         <div className="prose post-header mx-auto max-w-xl">
           <h1>{frontMatter.title}</h1>
           {frontMatter.description && (
