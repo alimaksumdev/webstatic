@@ -1,11 +1,8 @@
-# Pengembangan Web Statis Pondok Pesantren Ali Maksum
+# Pengembangan Web Statis Pondok Pesantren Ali Maksum (WIP)
 
 ## Arsitektur
 
 Dibangun dengan framework Nextjs+TailwindCSS dan nantinya di-deploy sebagai incremental static generation site.
-
-## On Progress
-- Tabel dari markdown belum dapat ditampilkan dengan benar
 
 ## Cara berkontribusi
 
