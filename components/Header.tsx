@@ -41,7 +41,6 @@ const Header = () => {
           </ul> */}
         </div>
       </div>
-      <hr className="border-b border-gray-100 opacity-25 my-0 py-0" />
     </nav>
   );
 };
