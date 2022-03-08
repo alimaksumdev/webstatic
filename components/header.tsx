@@ -2,7 +2,7 @@ import Link from 'next/link';
 
 const Header = () => {
   return (
-    <nav className="fixed top-0 z-40 w-full bg-white">
+    <nav className="sticky top-0 z-40 w-full antialiased text-slate-500 dark:text-slate-100 bg-white dark:bg-slate-900">
       <div className="w-full container mx-auto flex flex-wrap items-center justify-between mt-0 py-2">
         <div className="pl-4 flex items-center hover:text-indigo-500">
           <div><Link href={'/'}><img className='w-10 p-1 mr-2' src="/assets/images/favicon.svg" alt="PP Ali Maksum" /></Link></div>
@@ -12,7 +12,7 @@ const Header = () => {
             <Link href={'/'}>Krapyak Yogyakarta</Link>
           </div>
         </div>
-        <div className="lg:hidden pr-4">
+        <div className="md:hidden pr-4">
           <button
             id="nav-toogle"
             className="flex items-center p-1 text-pink-800 hover:text-gray-900 focus:outline-none focus:shadow-outline transform transition hover:scale:105 duration-300 ease-in-out"

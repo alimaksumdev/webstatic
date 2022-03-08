@@ -1,36 +1,77 @@
-# Pengembangan Web Statis Pondok Pesantren Ali Maksum
+# MDX Remote Example
 
-## Arsitektur
+This example shows how a simple blog might be built using the [next-mdx-remote](https://github.com/hashicorp/next-mdx-remote) library, which allows mdx content to be loaded via `getStaticProps` or `getServerSideProps`. The mdx content is loaded from a local folder, but it could be loaded from a database or anywhere else.
 
-Dibangun dengan framework Nextjs+TailwindCSS dan nantinya di-deploy sebagai incremental static generation site.
+The example also showcases [next-remote-watch](https://github.com/hashicorp/next-remote-watch), a library that allows next.js to watch files outside the `pages` folder that are not explicitly imported, which enables the mdx content here to trigger a live reload on change.
 
-## Pembuatan Konten
+Since `next-remote-watch` uses undocumented Next.js APIs, it doesn't replace the default `dev` script for this example. To use it, run `npm run dev:watch` or `yarn dev:watch`.
 
-Website ini didesain untuk konten statis yang kontennya _di-generate_ dari sumber berformat markdown
+## Deploy your own
 
-## Kenapa markdown?
+Deploy the example using [Vercel](https://vercel.com?utm_source=github&utm_medium=readme&utm_campaign=next-example):
 
-- Bahasa universal web yang simpel
-- Modular (berguna jika nantinya dipindah menjadi CMS-based web)
-- Mudah dikonversi dari atau ke format Microsoft Word dan HTML
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https://github.com/vercel/next.js/tree/canary/examples/with-mdx-remote&project-name=with-mdx-remote&repository-name=with-mdx-remote)
 
-## On Progress
-- Tabel dari markdown belum dapat ditampilkan dengan benar
+## How to use
 
-## Cara berkontribusi
+Execute [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) with [npm](https://docs.npmjs.com/cli/init) or [Yarn](https://yarnpkg.com/lang/en/docs/cli/create/) to bootstrap the example:
 
-### Local development
+```bash
+npx create-next-app --example with-mdx-remote with-mdx-remote-app
+# or
+yarn create next-app --example with-mdx-remote with-mdx-remote-app
+```
 
-- Clone repo: 
-  ```
-  git clone https://github.com/alimaksumdev/webstatic.git
-  cd webstatic
-  yarn 
-- Jalankan local development server:
+Deploy it to the cloud with [Vercel](https://vercel.com/new?utm_source=github&utm_medium=readme&utm_campaign=next-example) ([Documentation](https://nextjs.org/docs/deployment)).
 
-  ```
-  yarn dev
-  ```
+## Notes
 
-- Rekomendasi: gunakan editor Visual Studio Code
-- Ajukan pull request untuk menerapkan kontribusi Anda.
+### Conditional custom components
+
+When using `next-mdx-remote`, you can pass custom components to the MDX renderer. However, some pages/MDX files might use components that are used infrequently, or only on a single page. To avoid loading those components on every MDX page, you can use `next/dynamic` to conditionally load them.
+
+For example, here's how you can change `getStaticProps` to pass a list of component names, checking the names in the page render function to see which components need to be dynamically loaded.
+
+```js
+import dynamic from 'next/dynamic'
+import Test from '../components/test'
+
+const SomeHeavyComponent = dynamic(() => import('SomeHeavyComponent'))
+
+const defaultComponents = { Test }
+
+export function SomePage({ mdxSource, componentNames }) {
+  const components = {
+    ...defaultComponents,
+    SomeHeavyComponent: componentNames.includes('SomeHeavyComponent')
+      ? SomeHeavyComponent
+      : null,
+  }
+
+  return <MDXRemote {...mdxSource} components={components} />
+}
+
+export async function getStaticProps() {
+  const source = `---
+  title: Conditional custom components
+  ---
+
+  Some **mdx** text, with a default component <Test name={title}/> and a Heavy component <SomeHeavyComponent />
+  `
+
+  const { content, data } = matter(source)
+
+  const componentNames = [
+    /<SomeHeavyComponent/.test(content) ? 'SomeHeavyComponent' : null,
+  ].filter(Boolean)
+
+  const mdxSource = await serialize(content)
+
+  return {
+    props: {
+      mdxSource,
+      componentNames,
+    },
+  }
+}
+```

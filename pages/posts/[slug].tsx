@@ -1,98 +1,80 @@
-import { useRouter } from 'next/router'
-import ErrorPage from 'next/error'
-import Container from '../../components/container'
-import PostBody from '../../components/post-body'
-import Header from '../../components/header'
-import PostHeader from '../../components/post-header'
-import Layout from '../../components/layout'
-import { getPostBySlug, getAllPosts } from '../../lib/api'
-import PostTitle from '../../components/post-title'
-import Head from 'next/head'
-import markdownToHtml from '../../lib/markdownToHtml'
-import PostType from '../../types/post'
+import fs from "fs";
+import matter from "gray-matter";
+import { MDXRemote } from "next-mdx-remote";
+import { serialize } from "next-mdx-remote/serialize";
+import dynamic from "next/dynamic";
+import Head from "next/head";
+import path from "path";
+import CustomLink from "../../components/CustomLink";
+import Container from "../../components/Container";
+import { postFilePaths, POSTS_PATH } from "../../utils/mdxUtils";
 
-type Props = {
-  post: PostType
-  morePosts: PostType[]
-  preview?: boolean
-}
+// Custom components/renderers to pass to MDX.
+// Since the MDX files aren't loaded by webpack, they have no knowledge of how
+// to handle import statements. Instead, you must include components in scope
+// here.
+const components = {
+  a: CustomLink,
+  // It also works with dynamically-imported components, which is especially
+  // useful for conditionally loading components for certain routes.
+  // See the notes in README.md for more details.
+  TestComponent: dynamic(() => import("../../components/TestComponent")),
+  LinkButton: dynamic(() => import("../../components/LinkButton")),
+  Head,
+};
 
-const Post = ({ post, morePosts, preview }: Props) => {
-  const router = useRouter()
-  if (!router.isFallback && !post?.slug) {
-    return <ErrorPage statusCode={404} />
-  }
+export default function PostPage({ source, frontMatter }) {
   return (
-    <Layout preview={preview}>
-      <Header />
-      <Container>
-        {router.isFallback ? (
-          <PostTitle>Loading…</PostTitle>
-        ) : (
-          <>
-            <article className="mb-32 prose lg:prose-xl">
-              <Head>
-                <title>
-                  {post.title} | Pondok Pesantren Ali Maksum
-                </title>
-                <meta property="og:image" content={post.ogImage.url} />
-              </Head>
-              <PostHeader
-                title={post.title}
-                coverImage={post.coverImage}
-                date={post.date}
-                author={post.author}
-              />
-              <PostBody content={post.content} />
-            </article>
-          </>
-        )}
-      </Container>
-    </Layout>
-  )
+    <Container title={`${frontMatter.title} - PP Ali Maksum`}>
+      <main>
+        <div className="prose post-header mx-auto max-w-xl">
+          <h1>{frontMatter.title}</h1>
+          {frontMatter.description && (
+            <p className="description">{frontMatter.description}</p>
+          )}
+        </div>
+        <article className="p-2 lg:p-4 prose lg:prose-lg prose-headings:text-slate-900 dark:prose-headings:text-slate-100 mx-auto text-slate-900 dark:text-slate-100">
+          <div>
+            <MDXRemote {...source} components={components} />
+          </div>
+        </article>
+      </main>
+    </Container>
+  );
 }
 
-export default Post
+export const getStaticProps = async ({ params }) => {
+  const postFilePath = path.join(POSTS_PATH, `${params.slug}.mdx`);
+  const source = fs.readFileSync(postFilePath);
 
-type Params = {
-  params: {
-    slug: string
-  }
-}
+  const { content, data } = matter(source);
 
-export async function getStaticProps({ params }: Params) {
-  const post = getPostBySlug(params.slug, [
-    'title',
-    'date',
-    'slug',
-    'author',
-    'content',
-    'ogImage',
-    'coverImage',
-  ])
-  const content = await markdownToHtml(post.content || '')
+  const mdxSource = await serialize(content, {
+    // Optionally pass remark/rehype plugins
+    mdxOptions: {
+      remarkPlugins: [],
+      rehypePlugins: [],
+    },
+    scope: data,
+  });
 
   return {
     props: {
-      post: {
-        ...post,
-        content,
-      },
+      source: mdxSource,
+      frontMatter: data,
     },
-  }
-}
+  };
+};
 
-export async function getStaticPaths() {
-  const posts = getAllPosts(['slug'])
+export const getStaticPaths = async () => {
+  const paths = postFilePaths
+    // Remove file extensions for page paths
+    .map((path) => path.replace(/\.mdx?$/, ""))
+    // Map the path into the static paths object required by Next.js
+    .map((slug) => ({ params: { slug } }));
 
   return {
-    paths: posts.map((post) => {
-      return {
-        params: {
-          slug: post.slug,
-        },
-      }
-    }),
+    paths,
     fallback: false,
-  }
-}
+  };
+};

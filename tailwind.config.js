@@ -1,11 +1,10 @@
 module.exports = {
-  content: ['./components/**/*.tsx', './pages/**/*.tsx'],
+  content: [
+    "./pages/**/*.{js,ts,jsx,tsx}",
+    "./components/**/*.{js,ts,jsx,tsx}",
+  ],
   theme: {
-    extend: {
-      bacgroundImage: {
-        'intro-image': "url('./assets/images/intro-image')",
-      }
-    },
+    extend: {},
   },
   plugins: [
     require('@tailwindcss/typography'),
