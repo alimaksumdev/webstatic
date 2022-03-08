@@ -3,7 +3,7 @@ import Link from "next/link";
 
 const Intro = () => {
   return (
-    <section className="flex min-h-screen flex-col items-center justify-center py-2 bg-[url('/assets/images/intro-image.png')] bg-cover bg-center">
+    <section className="flex min-h-screen flex-col items-center justify-center py-2 bg-[url('/assets/images/intro-image.jpg')] bg-cover bg-center">
       <h1 className="text-center text-3xl md:text-6xl lg:text-8xl font-bold text-white tracking-tighter leading-tight drop-shadow-md px-8">
         SMP-SMA Ali Maksum
       </h1>
