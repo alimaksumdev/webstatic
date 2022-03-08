@@ -23,7 +23,7 @@ export default function Container(props) {
   };
 
   return (
-    <div className="mx-auto px-5 antialiased text-slate-500 dark:text-slate-400 bg-white dark:bg-slate-900">
+    <div className="mx-auto ntialiased text-slate-500 dark:text-slate-400 bg-white dark:bg-slate-900">
       <Head>
         <link
           rel="apple-touch-icon"

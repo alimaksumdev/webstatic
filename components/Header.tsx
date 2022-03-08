@@ -4,7 +4,7 @@ const Header = () => {
   return (
     <nav className="sticky top-0 z-40 w-full antialiased text-slate-500 dark:text-slate-100 bg-white dark:bg-slate-900">
       <div className="w-full container mx-auto flex flex-wrap items-center justify-between mt-0 py-2">
-        <div className="pl-4 flex items-center hover:text-indigo-500">
+        <div className="md:pl-4 flex items-center hover:text-indigo-500">
           <div><Link href={'/'}><img className='w-10 p-1 mr-2' src="/assets/images/favicon.svg" alt="PP Ali Maksum" /></Link></div>
           <div className='text-sm'>
             <Link href={'/'}>Yayasan Pondok Pesantren Ali Maksum</Link>
@@ -12,7 +12,7 @@ const Header = () => {
             <Link href={'/'}>Krapyak Yogyakarta</Link>
           </div>
         </div>
-        <div className="md:hidden pr-4">
+        {/* <div className="md:hidden">
           <button
             id="nav-toogle"
             className="flex items-center p-1 text-pink-800 hover:text-gray-900 focus:outline-none focus:shadow-outline transform transition hover:scale:105 duration-300 ease-in-out"
@@ -26,7 +26,7 @@ const Header = () => {
               <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" />
             </svg>
           </button>
-        </div>
+        </div> */}
         <div
           id="nav-content"
           className="w-full flex-grow lg:flex lg:items-center lg:w-auto hidden mt-2 lg:mt-0 p-4 lg:p-0 z-20"
