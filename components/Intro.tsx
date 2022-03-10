@@ -14,13 +14,13 @@ const Intro = () => {
       <div className="columns-2 flex-col my-2">
       <button
         id="navAction"
-        className="mx-auto min-w-full px-2 bg-slate-900 hover:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50 text-white hover:text-slate-100 no-underline font-semibold h-12 rounded-lg flex items-center justify-center dark:bg-sky-500 dark:highlight-white/20 dark:hover:bg-sky-400"
+        className="mx-auto min-w-full px-2 bg-slate-900 hover:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50 text-white hover:text-slate-100 no-underline font-semibold h-12 rounded-lg flex items-center justify-center dark:bg-sky-500 dark:highlight-white/20 dark:hover:bg-sky-600"
       >
         <Link href={'/posts/info-pendaftaran'}>Info Pendaftaran</Link>
       </button>
       <button
         id="navAction"
-        className="bg-mx-auto min-w-full px-2 slate-100 hover:bg-slate-50 focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50 text-slate-900 hover:text-slate-500 no-underline font-semibold h-12 rounded-lg flex items-center justify-center dark:bg-slate-900 dark:highlight-white/20 dark:hover:bg-slate-700 dark:text-slate-100 dark:hover:text-slate-50"
+        className="mx-auto min-w-full px-2 bg-sky-500 hover:bg-sky-600 focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50 text-slate-50 no-underline font-semibold h-12 rounded-lg flex items-center justify-center dark:bg-slate-900 dark:highlight-white/20 dark:hover:bg-sky-600 dark:text-slate-100 dark:hover:text-slate-50"
       >
         <Link href={'/posts/about'}>Profil</Link>
       </button>
