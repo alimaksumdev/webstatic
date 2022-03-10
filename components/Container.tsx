@@ -17,39 +17,31 @@ export default function Container(props) {
   const router = useRouter();
 
   const meta = {
-    title: "PP Ali Maksum",
-    description: "Pondok Pesantren Ali Maksum Krapyak",
+    title: "PP. Ali Maksum",
+    description: "Yayasan Pondok Pesantren Ali Maksum Krapyak, Yogyakarta dengan lembaga formal SMP dan SMA Ali Maksum",
+    image: "https://alimaksum.com/assets/images/logo.svg",
+    type: "website",
     ...customMeta,
   };
 
   return (
     <div className="mx-auto ntialiased text-slate-500 dark:text-slate-400 bg-white dark:bg-slate-900">
       <Head>
-        <link
-          rel="apple-touch-icon"
-          sizes="180x180"
-          href="/favicon/favicon.png"
-        />
-        <link
-          rel="icon"
-          type="image/png"
-          sizes="32x32"
-          href="/favicon/favicon.png"
-        />
-        <link
-          rel="icon"
-          type="image/png"
-          sizes="16x16"
-          href="/favicon/favicon.png"
-        />
-        <link rel="manifest" href="/favicon/site.webmanifest" />
-        <link
-          rel="mask-icon"
-          href="/favicon/safari-pinned-tab.svg"
-          color="#000000"
-        />
-        <link rel="shortcut icon" href="/favicon/favicon.ico" />
         <title>{meta.title}</title>
+        <meta name="robots" content="follow, index" />
+        <meta content={meta.description} name="description" />
+        <meta property="og:url" content={`https://alimaksum.com${router.asPath}`} />
+        <link rel="canonical" href={`https://alimaksum.com${router.asPath}`} />
+        <meta property="og:type" content={meta.type} />
+        <meta property="og:site_name" content="Pondok Pesantren Ali Maksum Krapyak" />
+        <meta property="og:description" content={meta.description} />
+        <meta property="og:title" content={meta.title} />
+        <meta property="og:image" content={meta.image} />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:site" content="@alimaksum_com" />
+        <meta name="twitter:title" content={meta.title} />
+        <meta name="twitter:description" content={meta.description} />
+        <meta name="twitter:image" content={meta.image} />
       </Head>
       <Header />
       {children}

@@ -25,7 +25,7 @@ const components = {
 
 export default function PostPage({ source, frontMatter }) {
   return (
-    <Container title={`${frontMatter.title} - PP Ali Maksum`}>
+    <Container title={`${frontMatter.title} - PP Ali Maksum`} description={frontMatter.description}>
       <main className="mx-4 sm:mx-2 ">
         <div className="post-header text-slate-900 dark:text-slate-100 prose prose-headings:text-slate-900 dark:prose-headings:text-slate-100 mx-auto my-2 lg:max-w-2xl">
           <h1>{frontMatter.title}</h1>
@@ -33,7 +33,7 @@ export default function PostPage({ source, frontMatter }) {
             <p className="description">{frontMatter.description}</p>
           )}
         </div>
-        <article className="p-2 lg:p-4 mx-auto prose lg:prose-lg prose-headings:text-slate-900 dark:prose-headings:text-slate-100 text-slate-900 dark:text-slate-100 lg:max-w-2xl">
+        <article className="p-2 lg:p-4 mx-auto prose lg:prose-lg prose-headings:text-slate-900 dark:prose-headings:text-slate-100 text-slate-900 dark:text-slate-100 prose-blockquote:text-slate-900 dark:prose-blockquote:text-slate-50 dark:prose-strong:text-slate-50 lg:max-w-2xl">
           <div>
             <MDXRemote {...source} components={components} />
           </div>
