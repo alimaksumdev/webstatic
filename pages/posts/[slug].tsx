@@ -1,80 +1,46 @@
-import fs from "fs";
-import matter from "gray-matter";
-import { MDXRemote } from "next-mdx-remote";
-import { serialize } from "next-mdx-remote/serialize";
-import dynamic from "next/dynamic";
-import Head from "next/head";
-import path from "path";
-import CustomLink from "components/CustomLink";
-import Container from "components/Container";
-import { postFilePaths, POSTS_PATH } from "utils/mdxUtils";
+import Container from 'components/Container'
+import { format, parseISO } from 'date-fns'
+import { allPosts, Post } from 'contentlayer/generated'
+import { useMDXComponent } from 'next-contentlayer/hooks'
+import components from '../../components/MDXComponents'
 
-// Custom components/renderers to pass to MDX.
-// Since the MDX files aren't loaded by webpack, they have no knowledge of how
-// to handle import statements. Instead, you must include components in scope
-// here.
-const components = {
-  a: CustomLink,
-  // It also works with dynamically-imported components, which is especially
-  // useful for conditionally loading components for certain routes.
-  // See the notes in README.md for more details.
-  TestComponent: dynamic(() => import("components/TestComponent")),
-  LinkButton: dynamic(() => import("components/LinkButton")),
-  Head,
-};
-
-export default function PostPage({ source, frontMatter }) {
-  return (
-    <Container title={`${frontMatter.title} - PP Ali Maksum`} description={frontMatter.description}>
-      <main className="mx-4 sm:mx-2 ">
-        <div className="post-header text-slate-900 dark:text-slate-100 prose prose-headings:text-slate-900 dark:prose-headings:text-slate-100 mx-auto my-2 lg:max-w-2xl">
-          <h1>{frontMatter.title}</h1>
-          {frontMatter.description && (
-            <p className="description">{frontMatter.description}</p>
-          )}
-        </div>
-        <article className="p-2 lg:p-4 mx-auto prose lg:prose-lg prose-headings:text-slate-900 dark:prose-headings:text-slate-100 text-slate-900 dark:text-slate-100 prose-blockquote:text-slate-900 dark:prose-blockquote:text-slate-50 dark:prose-strong:text-slate-50 lg:max-w-2xl">
-          <div>
-            <MDXRemote {...source} components={components} />
-          </div>
-        </article>
-      </main>
-    </Container>
-  );
-}
-
-export const getStaticProps = async ({ params }) => {
-  const postFilePath = path.join(POSTS_PATH, `${params.slug}.mdx`);
-  const source = fs.readFileSync(postFilePath);
-
-  const { content, data } = matter(source);
-
-  const mdxSource = await serialize(content, {
-    // Optionally pass remark/rehype plugins
-    mdxOptions: {
-      remarkPlugins: [],
-      rehypePlugins: [],
-    },
-    scope: data,
-  });
-
-  return {
-    props: {
-      source: mdxSource,
-      frontMatter: data,
-    },
-  };
-};
-
-export const getStaticPaths = async () => {
-  const paths = postFilePaths
-    // Remove file extensions for page paths
-    .map((path) => path.replace(/\.mdx?$/, ""))
-    // Map the path into the static paths object required by Next.js
-    .map((slug) => ({ params: { slug } }));
-
+export async function getStaticPaths() {
+  const paths = allPosts.map((post) => post.url)
   return {
     paths,
     fallback: false,
-  };
-};
+  }
+}
+
+export async function getStaticProps({ params }) {
+  const post = allPosts.find((post) => post.slug === params.slug)
+  return {
+    props: {
+      post,
+    },
+  }
+}
+
+export default function PostPage({ post }: { post: Post }) {
+  const Component = useMDXComponent(post.body.code)
+  return (
+    <>
+      <Container>
+        <article className="mx-auto mt-16 px-2 lg:max-w-2xl prose lg:prose-lg prose-headings:text-slate-900 dark:prose-headings:text-slate-50 text-slate-900 dark:text-slate-50 prose-blockquote:text-slate-900 dark:prose-blockquote:text-slate-50 dark:prose-strong:text-slate-50">
+          <h1>{post.title}</h1>
+          <p className="text-sm">
+            {format(parseISO(post.date), 'dd MMMM yyyy')}
+          </p>
+          <div className='my-4'>{post.description}</div>
+          <Component 
+            components={
+              {
+                ...components
+              } as any
+            }
+          />
+        </article>
+      </Container>
+    </>
+  )
+}

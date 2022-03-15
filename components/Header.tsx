@@ -2,10 +2,10 @@ import Link from 'next/link';
 
 const Header = () => {
   return (
-    <nav className="sticky top-0 z-40 w-full antialiased text-slate-900 dark:text-slate-100 bg-white dark:bg-slate-900">
+    <nav className="fixed top-0 z-40 w-full bg-slate-50/80 dark:bg-slate-900/80 backdrop-blur shadow-md">
       <div className="w-full container mx-auto flex flex-wrap items-center justify-between mt-0 py-2">
-        <div className="px-1 md:px-4 flex items-center hover:text-sky-800 dark:hover:text-sky-200">
-          <div><Link href={'/'}><img className='w-10 p-1 mr-2' src="/assets/images/favicon.svg" alt="PP Ali Maksum" /></Link></div>
+        <div className="px-1 md:px-4 flex items-center">
+          <button type='button'><Link href={'/'}><img className='w-10 p-1 mr-2' src="/assets/images/favicon.svg" alt="PP Ali Maksum" /></Link></button>
           <div className='text-sm'>
             <Link href={'/'}>Yayasan Pondok Pesantren Ali Maksum</Link>
             <br />

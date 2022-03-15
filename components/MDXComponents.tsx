@@ -1,28 +1,25 @@
-import Link from 'next/link';
-import Image from 'next/image';
+import Link from 'next/link'
+
+import LinkButton from './LinkButton'
 
 const CustomLink = (props) => {
-  const href = props.href;
-  const isInternalLink = href && (href.startsWith('/') || href.startsWith('#'));
+  const href = props.href
+  const isInternalLink = href && (href.startsWith('/') || href.startsWith('#'))
 
   if (isInternalLink) {
     return (
       <Link href={href}>
         <a {...props}>{props.children}</a>
       </Link>
-    );
+    )
   }
 
-  return <a target="_blank" rel="noopener noreferrer" {...props} />;
-};
-
-function RoundedImage(props) {
-  return <Image alt={props.alt} className="rounded-lg" {...props} />;
+  return <a target="_blank" rel="noopener noreferrer" {...props} />
 }
 
 const MDXComponents = {
-  Image: RoundedImage,
-  a: CustomLink,
-};
+    LinkButton,
+    a: CustomLink
+}
 
 export default MDXComponents;

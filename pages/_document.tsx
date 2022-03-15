@@ -7,19 +7,19 @@ export default function Document(props) {
       <link
           rel="apple-touch-icon"
           sizes="180x180"
-          href="/favicon/favicon.png"
+          href="/assets/images/favicon.png"
         />
         <link
           rel="icon"
           type="image/png"
           sizes="32x32"
-          href="/favicon/favicon.png"
+          href="/assets/images/favicon.png"
         />
         <link
           rel="icon"
           type="image/png"
           sizes="16x16"
-          href="/favicon/favicon.png"
+          href="/assets/images/favicon.png"
         />
         <link rel="manifest" href="/favicon/site.webmanifest" />
         <link
@@ -27,7 +27,7 @@ export default function Document(props) {
           href="/favicon/safari-pinned-tab.svg"
           color="#000000"
         />
-        <link rel="shortcut icon" href="/favicon/favicon.ico" />
+        <link rel="shortcut icon" href="/assets/images/favicon.png" />
         <meta content="#ffffff" name="theme-color" />
         <meta content="#ffffff" name="msapplication-TileColor" />
         <meta
@@ -36,7 +36,7 @@ export default function Document(props) {
         />
         <meta name="google-site-verification" content="BUTvzstLYCF_WJbyVVLaTtInF99uyDCvYI2wROIM9tE" />
       </Head>
-      <body className="bg-white dark:bg-black text-white dark:text-black">
+      <body className='text-slate-900 dark:text-slate-50 bg-slate-50 dark:bg-slate-900'>
         <Main />
         <NextScript />
       </body>
