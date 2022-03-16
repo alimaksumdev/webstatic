@@ -1,4 +1,4 @@
-import { ReactNode, FunctionComponent } from "react";
+// import { ReactNode, FunctionComponent } from "react";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import Head from "next/head";

@@ -1,12 +1,22 @@
-import Link from 'next/link';
+import Link from 'next/link'
+import Image from 'next/image'
 
 const Header = () => {
   return (
-    <nav className="fixed top-0 z-40 w-full bg-slate-50/80 dark:bg-slate-900/80 backdrop-blur shadow-md">
-      <div className="w-full container mx-auto flex flex-wrap items-center justify-between mt-0 py-2">
-        <div className="px-1 md:px-4 flex items-center">
-          <button type='button'><Link href={'/'}><img className='w-10 p-1 mr-2' src="/assets/images/favicon.svg" alt="PP Ali Maksum" /></Link></button>
-          <div className='text-sm'>
+    <nav className="fixed top-0 z-40 w-full bg-slate-50/80 shadow-md backdrop-blur dark:bg-slate-900/80">
+      <div className="container mx-auto mt-0 flex w-full flex-wrap items-center justify-between pb-0 pt-2">
+        <div className="flex px-2 md:px-4">
+          <button type="button">
+            <Link href={'/'} passHref>
+              <Image
+                src="/assets/images/favicon.svg"
+                alt="PP Ali Maksum"
+                width={40}
+                height={42}
+              />
+            </Link>
+          </button>
+          <div className="text-sm ml-1">
             <Link href={'/'}>Yayasan Pondok Pesantren Ali Maksum</Link>
             <br />
             <Link href={'/'}>Krapyak Yogyakarta</Link>
@@ -29,7 +39,7 @@ const Header = () => {
         </div> */}
         <div
           id="nav-content"
-          className="w-full flex-grow lg:flex lg:items-center lg:w-auto hidden mt-2 lg:mt-0 p-4 lg:p-0 z-20"
+          className="z-20 mt-2 hidden w-full flex-grow p-4 lg:mt-0 lg:flex lg:w-auto lg:items-center lg:p-0"
         >
           {/* <ul className="list-reset lg:flex justify-end flex-1 items-center">
             <li className="mr-3 inline-block py-2 px-4 text-black font-bold no-underline">
@@ -42,7 +52,7 @@ const Header = () => {
         </div>
       </div>
     </nav>
-  );
-};
+  )
+}
 
-export default Header;
+export default Header
