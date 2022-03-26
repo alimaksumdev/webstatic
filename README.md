@@ -2,6 +2,7 @@
 
 Todos:
  - [x] Scroll to headings by id
- - [ ] Mobile Menu
  - [ ] Intro cover image by media query
+ - [ ] Content type diversification
+ - [ ] Mobile Menu
  - [ ] TOC sidebar

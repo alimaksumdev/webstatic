@@ -12,7 +12,7 @@ const Header = () => {
                 src="/assets/images/favicon.svg"
                 alt="PP Ali Maksum"
                 width={40}
-                height={42}
+                height={40}
               />
             </Link>
           </button>

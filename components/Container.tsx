@@ -40,7 +40,9 @@ export default function Container(props) {
         <meta name="twitter:image" content={meta.image} />
       </Head>
       <Header />
+      <main>
       {children}
+      </main>
       <Footer />
     </div>
   );

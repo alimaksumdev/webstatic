@@ -4,7 +4,7 @@ import remarkGfm from 'remark-gfm'
 import rehypeSlug from 'rehype-slug'
 import rehypeAutolinkHeadings from 'rehype-autolink-headings'
 
-export const Post = defineDocumentType(() => ({
+const Post = defineDocumentType(() => ({
   name: 'Post',
   filePathPattern: `posts/*.mdx`,
   contentType: "mdx",
@@ -35,6 +35,71 @@ export const Post = defineDocumentType(() => ({
     }
   },
 }))
+
+const Pengumuman = defineDocumentType(() => ({
+  name: 'Pengumuman',
+  filePathPattern: `pengumuman/*.mdx`,
+  contentType: 'mdx',
+  fields: {
+    title: {
+      type: 'string',
+      description: 'Judul pengumuman',
+      required: true,
+    },
+    date: {
+      type: 'date',
+      description: 'Tanggal diumumkan',
+      required: true,
+    },
+  },
+  computedFields: {
+    url: {
+      type: 'string',
+      resolve: (pengumuman) => `/${pengumuman._raw.flattenedPath}`,
+    },
+    slug: {
+      type: 'string',
+      resolve: (pengumuman) => `${pengumuman._raw.sourceFileName.replace(/\.mdx$/, '')}`,
+    }
+  },
+}))
+
+const Berita = defineDocumentType(() => ({
+  name: 'Berita',
+  filePathPattern: `berita/*.mdx`,
+  fields: {
+    title: {
+      type: 'string',
+      description: 'Judul berita',
+      required: true,
+    },
+    author: {
+      type: 'string',
+      description: 'Nama penulis',
+      required: true
+    },
+    date: {
+      type: 'date',
+      description: 'Tanggal diposting',
+      required: true,
+    },
+    image: {
+      type: 'string',
+      description: 'Foto berita',
+      required: true
+    },
+  },
+  computedFields: {
+    url: {
+      type: 'string',
+      resolve: (berita) => `/${berita._raw.flattenedPath}`,
+    },
+    slug: {
+      type: 'string',
+      resolve: (berita) => `${berita._raw.sourceFileName.replace(/\.mdx$/, '')}`,
+    }
+  },
+}));
 
 const contentLayerConfig = makeSource({
     contentDirPath: 'data',
