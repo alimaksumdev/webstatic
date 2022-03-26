@@ -15,12 +15,10 @@ export default function PostLayout({
       <article className="prose mx-auto mt-16 mb-8 min-h-screen px-4 text-slate-900 prose-headings:text-slate-900 prose-blockquote:text-slate-900 dark:text-slate-50 dark:prose-headings:text-slate-50 dark:prose-blockquote:text-slate-50 dark:prose-strong:text-slate-50 lg:prose-lg lg:max-w-2xl">
         <h1>{post.title}</h1>
         <div className="my-4">{post.description}</div>
-        <div>
         {/* <p className="text-sm text-slate-800 dark:text-slate-200">
             ⏲ {format(parseISO(post.date), 'dd MMMM yyyy')}
           </p> */}
         {children}
-        </div>
       </article>
     </Container>
   )
