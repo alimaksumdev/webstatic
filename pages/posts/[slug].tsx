@@ -3,6 +3,7 @@ import PostLayout from 'layouts/post'
 import { allPosts, Post } from 'contentlayer/generated'
 import { useMDXComponent } from 'next-contentlayer/hooks'
 import components from '../../components/MDXComponents'
+import Head from 'next/head'
 // import { format, parseISO } from 'date-fns'
 
 export async function getStaticPaths() {
@@ -27,6 +28,9 @@ export default function PostPage({ post }: { post: Post }) {
   return (
     <>
     <Container>
+      <Head>
+      <title>{post.title} -  PP Ali Maksum Krapyak</title>
+      </Head>
       <article className="mx-auto mt-16 mb-8 px-4 min-h-screen lg:max-w-2xl prose lg:prose-lg prose-headings:text-slate-900 dark:prose-headings:text-slate-50 text-slate-900 dark:text-slate-50 prose-blockquote:text-slate-900 dark:prose-blockquote:text-slate-50 dark:prose-strong:text-slate-50">
         <h1>{post.title}</h1>
         {/* <p className="text-sm">
